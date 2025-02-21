@@ -95,7 +95,7 @@ body {
 	justify-content: center;
 	width: 100%;
 	height: 100vh;
-	background: url(/assets/img/fon.jpg) center center no-repeat;
+	background: url(/Veb_diz/assets/img/fon.jpg) center center no-repeat;
 
 	/* чтобы на весь экран   */
 
@@ -112,9 +112,9 @@ body {
 .intro-title {
 	color: white;
 	font-size: 150px;
-	font-family: "Monomakh", serif;
-  font-weight: 400;
-  font-style: normal;
+	font-family: 'Monomakh', serif;
+	font-weight: 400;
+	font-style: normal;
 	text-align: center;
 	line-height: 1;
 }
@@ -211,4 +211,215 @@ body {
 	border-color: aqua;
 	/* background-color:white; */
 	color: aqua;
+}
+
+/* img */
+.biography1 {
+	width: 100%;
+	height: 100%;
+}
+
+/* section1 */
+.etogrid {
+	/* height: 510px; */
+	height: 100%;
+	width:100%;
+	max-width: 1600px;
+	max-height: 510px;
+	display: grid;
+	grid-template-rows: 3fr 1fr 3fr;
+	grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+	grid-template-areas:
+		'slider-arrows healthy thirsty thirsty'
+		'slider-arrows healthy slider-dots orange'
+		'freshy healthy slider-dots orange';
+
+	grid-template:
+		'slider-arrows healthy thirsty thirsty' 3fr
+		'slider-arrows healthy slider-dots orange' 1fr
+		'freshy healthy slider-dots orange' 3fr/2fr 1fr 1.5fr 1.5fr;
+}
+
+.slider-arrows {
+	grid-area: slider-arrows;
+	position: relative;
+}
+
+.slider-arrows_nav {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 100%;
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	transform: translateY(-50%);
+}
+
+.slider-arrows_arrow--left {
+	color: white;
+	font-size: 30px;
+	background: none;
+	border-radius: 30%;
+	border: 2px solid white;
+	text-decoration: none;
+	transition: border-color 0.3s linear, color 0.3s linear;
+
+	font-family: 'Coming Soon', serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.slider-arrows_arrow--right {
+	color: white;
+	font-size: 30px;
+	background: none;
+	border-radius: 30%;
+	border: 2px solid white;
+	text-decoration: none;
+	transition: border-color 0.3s linear, color 0.3s linear;
+
+	font-family: 'Coming Soon', serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.slider-arrows_items-wrapper {
+	width: 100%;
+	height: 100%;
+	filter: brightness(70%);
+	display: flex;
+}
+
+.slider-arrows_arrow--right:hover {
+	color: aquamarine;
+	border-color: aquamarine;
+}
+
+.slider-arrows_arrow--left:hover {
+	color: aquamarine;
+	border-color: aquamarine;
+}
+
+/* slider dots */
+.slider-dots {
+	grid-area: slider-dots;
+	position: relative;
+}
+
+.biography2 {
+	width: 100%;
+	height: 100%;
+}
+
+.slider-dots_nav-item {
+	width: 10px;
+	height: 10px;
+	background-color: white;
+	border-radius: 40%;
+	text-decoration: none;
+	border-color: white;
+	transition: 0.3s opacity;
+
+	font-family: 'Coming Soon', serif;
+	font-weight: 600;
+	font-style: normal;
+}
+.slider-dots_nav-item:hover {
+	opacity: 0.8;
+}
+
+.slider-dots_nav-item--active {
+	width: 10px;
+	height: 10px;
+	border: 2px solid white;
+	background-color: transparent;
+	border-radius: 40%;
+	text-decoration: none;
+
+	transition: 0.3s opacity;
+
+	font-family: 'Coming Soon', serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.slider-dots_nav-item--active:hover {
+	opacity: 0.8;
+}
+
+.slider-dots_nav {
+	position: absolute;
+	display: flex;
+  justify-content: center; 
+	align-items: center;
+	width: 100%;
+	gap: 10px;
+	/* position: absolute; */
+	top: 1px;
+	left: 0;
+}
+
+/* section text */
+.section1 {
+	  margin-bottom: 100px;
+		height: 600px; 
+	
+	
+}
+
+.section1-text {
+	margin-bottom: 10px;
+	margin: 10px auto 10px;
+	width: 100%;
+	max-width: 950px;
+	text-align: center;
+
+	font-family: 'Monomakh', serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.section1-title {
+	font-size: 30px;
+}
+
+.section1-subtitle {
+	font-size: 20px;
+}
+
+/* hisory */
+.freshy {
+	grid-area: freshy;
+	background-color: #bfbd30;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+	padding: 10px;
+}
+
+.common {
+	color: white;
+}
+
+.common-desc {
+	max-width: 60%;
+	hyphens: auto;
+
+	font-family: 'Oswald', serif;
+	font-optical-sizing: auto;
+	font-weight: 100;
+	font-style: normal;
+}
+.title-article {
+	font-family: 'Oswald', serif;
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
+	line-height: 1;
+	text-align: center;
 }
