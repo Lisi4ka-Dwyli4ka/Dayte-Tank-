@@ -64,7 +64,7 @@ body {
 	width: 100%;
 	max-width: 1600px;
 	height: 100%;
-	max-height: 700px ;
+	max-height: 700px;
 
 	/* каскадная таблица для того чтобы учесть границу в элемент */
 	*,
@@ -210,27 +210,39 @@ body {
 }
 
 .btn:hover {
-	border-color: aqua;
+	border-color: #ddbbff;
 	/* background-color:white; */
-	color: aqua;
+	color: #ddbbff;
 }
 
 /* img */
 .biography1 {
 	width: 100%;
 	height: 100%;
+
+	animation: fade 0.5s;
 }
 
 .biography2 {
 	width: 100%;
 	height: 100%;
+
+	animation: fade 0.5s;
+}
+
+@keyframes fade {
+	0% {
+		opacity: 0.3;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 /* section1 */
 .etogrid {
 	/* height: 510px; */
-	height: 100%;
-	width: 100%;
+	
 	display: grid;
 	grid-template-rows: 3fr 1fr 3fr;
 	grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
@@ -296,17 +308,16 @@ body {
 	height: 100%;
 	filter: brightness(70%);
 	/* display: flex; */
-	
 }
 
 .slider-arrows_arrow--right:hover {
-	color: aquamarine;
-	border-color: aquamarine;
+	color: #ddbbff;
+	border-color: #ddbbff;
 }
 
 .slider-arrows_arrow--left:hover {
-	color: aquamarine;
-	border-color: aquamarine;
+	color: #ddbbff;
+	border-color: #ddbbff;
 }
 
 /* slider dots */
@@ -316,7 +327,6 @@ body {
 	width: 100%;
 	height: 100%;
 }
-
 
 .slider-dots_nav-item {
 	width: 10px;
@@ -335,7 +345,7 @@ body {
 	opacity: 0.8;
 }
 
-.slider-dots_items-wrapper{
+.slider-dots_items-wrapper {
 	width: 100%;
 	height: 100%;
 }
@@ -367,17 +377,14 @@ body {
 	width: 100%;
 	gap: 10px;
 	/* position: absolute; */
-	top: 1px;
+	top: 20px;
 	left: 0;
 }
 
 /* section text */
 .section1 {
-	margin-top: 0px;
-	margin-bottom: 0px;
-	width: 100%;
-	height: 100%;
-	/* height: 600px; */
+	height: 100vh; /* Ограничиваем на высоту экрана */
+	
 }
 
 .section1-text {
@@ -403,7 +410,7 @@ body {
 /* hisory */
 .freshy {
 	grid-area: freshy;
-	background-color: #bfbd30;
+	background-color: #bb75ff;
 
 	display: flex;
 	justify-content: center;
@@ -424,7 +431,7 @@ body {
 	font-optical-sizing: auto;
 	font-weight: 100;
 	font-style: normal;
-	color: white;
+	color: #1c0038;
 }
 .title-article {
 	font-family: 'Oswald', serif;
@@ -433,19 +440,19 @@ body {
 	font-style: normal;
 	line-height: 1;
 	text-align: center;
-	color: white;
+	color: #1c0038;
 	padding-bottom: 20px;
 }
 
 .healthy {
 	grid-area: healthy;
-	background-color: #bf3030;
+	background-color: #d1a2ff;
 	padding-bottom: 200px;
 }
 
 .thirsty {
 	grid-area: thirsty;
-	background-color: #352f85;
+	background-color: #e2c4ff;
 }
 
 .common-col-rev {
@@ -465,31 +472,31 @@ body {
 	gap: 30px;
 	padding: 10px;
 	flex-direction: row-reverse;
-	
 }
 
-.thirsty .common-desc{
+.thirsty .common-desc {
 	/* max-width: 390px; */
 }
 
-.orange-img{
-width: 100%;
-height: 100%;
+.orange-img {
+	width: 100%;
+	height: 100%;
 }
 
-.orange{
- grid-area: orange;
- position: relative;
+.orange {
+	grid-area: orange;
+	position: relative;
 }
 
-.orange-btn{
+.orange-btn {
 	grid-area: orange;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
+	margin-left: 100px;
 }
 
-.orange-btn-hrev{
+.orange-btn-hrev {
 	position: absolute;
 
 	color: white;
@@ -506,8 +513,6 @@ height: 100%;
 }
 
 .orange-btn-hrev:hover {
-	color: aquamarine;
-	border-color: aquamarine;
+	color: #ddbbff;
+	border-color: #ddbbff;
 }
-
-
