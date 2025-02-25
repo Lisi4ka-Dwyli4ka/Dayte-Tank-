@@ -62,9 +62,7 @@ body {
 	margin: 0;
 	line-height: 1.6;
 	width: 100%;
-	max-width: 1600px;
 	height: 100%;
-	max-height: 700px;
 
 	/* каскадная таблица для того чтобы учесть границу в элемент */
 	*,
@@ -85,7 +83,7 @@ body {
 
 /* container */
 .container {
-	width: 100%;
+	width: 90%;
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -96,7 +94,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	background: url(/Veb_diz/assets/img/fon.jpg) center center no-repeat;
 
 	/* чтобы на весь экран   */
@@ -113,7 +111,7 @@ body {
 
 .intro-title {
 	color: white;
-	font-size: 150px;
+	font-size: clamp(50px, 10vw, 150px);
 	font-family: 'Monomakh', serif;
 	font-weight: 400;
 	font-style: normal;
@@ -133,7 +131,7 @@ body {
 
 .intro-suptitle {
 	color: white;
-	font-size: 45px;
+	font-size: clamp(20px, 4vw, 45px);
 	font-family: 'Montserrat', serif;
 	font-optical-sizing: auto;
 	font-weight: 200;
@@ -172,7 +170,7 @@ body {
 	font-family: 'Coming Soon', serif;
 	font-weight: 400;
 	font-style: normal;
-	font-size: 14px;
+	font-size: clamp(12px, 2vw, 14px);
 }
 
 .nav_link {
@@ -242,10 +240,11 @@ body {
 /* section1 */
 .etogrid {
 	/* height: 510px; */
-	
+	overflow: hidden;
 	display: grid;
 	grid-template-rows: 3fr 1fr 3fr;
 	grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+
 	grid-template-areas:
 		'slider-arrows healthy thirsty thirsty'
 		'slider-arrows healthy slider-dots orange'
@@ -382,13 +381,15 @@ body {
 }
 
 /* section text */
-.section1 {
-	height: 100vh; /* Ограничиваем на высоту экрана */
-	
+.section {
+	background: url(/Veb_diz/assets/img/fon_sectionC.jpg) center no-repeat fixed;
+	background-size: cover;
+	min-height: 100vh; /* Вместо height: 100vh */
+	max-height: 600px;
+	overflow: hidden; /* Чтобы элементы не вылезали */
 }
 
-.section1-text {
-	margin-bottom: 10px;
+.section-text {
 	margin: 0px auto 3px;
 	width: 100%;
 	max-width: 950px;
@@ -399,12 +400,14 @@ body {
 	font-style: normal;
 }
 
-.section1-title {
+.section-title {
 	font-size: 30px;
+	color: white;
 }
 
-.section1-subtitle {
+.section-subtitle {
 	font-size: 20px;
+	color: white;
 }
 
 /* hisory */
@@ -489,6 +492,7 @@ body {
 }
 
 .orange-btn {
+	position: relative;
 	grid-area: orange;
 	display: flex;
 	justify-content: space-between;
@@ -516,3 +520,102 @@ body {
 	color: #ddbbff;
 	border-color: #ddbbff;
 }
+
+/* section2 */
+
+.players {
+	width: 100vw;
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	/* flex-wrap: nowrap; */
+	margin-top: 10px;
+
+	/* gap: 20px; */
+}
+
+.player {
+	background-color: #d1a2ff;
+
+	max-width: 250px;
+	max-height: 300px;
+	width: 100%;
+	padding: 25px;
+}
+.cover {
+	display: flex;
+	justify-content: center;
+}
+
+.song {
+	font-family: 'Oswald', serif;
+	font-optical-sizing: auto;
+	font-weight: 100;
+	text-align: center;
+}
+
+.img_cover {
+	width: 100%;
+}
+
+.progress_container {
+	border-radius: 5px;
+	width: 100%;
+	height: 10px;
+	margin-top: 3px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	background-color: #e2c4ff;
+
+	.progress {
+		background-color: black;
+		border-radius: 5px;
+		height: 6px;
+		width: 150px;
+	}
+}
+
+.albom_title {
+	writing-mode: vertical-rl;
+	text-orientation: upright;
+
+	font-family: 'Oswald', serif;
+	font-optical-sizing: auto;
+	font-weight: 100;
+	text-align: center;
+}
+
+.section2_suptitle {
+	display: flex;
+	justify-content: center;
+	
+	margin: 60px;
+	height: 280px;
+
+}
+
+
+.player_buttons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 184px;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 3px;
+}
+
+.stars{
+	width: 100%;
+	text-align: center;
+}
+.star{
+	width:200px;
+	
+}
+.star--active{
+	width:200px;
+	
+}
+
