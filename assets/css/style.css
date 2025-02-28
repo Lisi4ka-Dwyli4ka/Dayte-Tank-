@@ -95,7 +95,7 @@ body {
 	justify-content: center;
 	width: 100%;
 	min-height: 100vh;
-	background: url(/Veb_diz/assets/img/fon.jpg) center center no-repeat;
+	background: url(/assets/img/fon.jpg) center center no-repeat;
 
 	/* чтобы на весь экран   */
 
@@ -382,7 +382,7 @@ body {
 
 /* section text */
 .section {
-	background: url(/Veb_diz/assets/img/fon_sectionC.jpg) center no-repeat fixed;
+	background: url(/assets/img/fon_sectionC.jpg) center no-repeat fixed;
 	background-size: cover;
 	min-height: 100vh; /* Вместо height: 100vh */
 	max-height: 600px;
@@ -525,6 +525,7 @@ body {
 
 .players {
 	width: 100vw;
+	
 	display: flex;
 	justify-content: space-around;
 	align-items: flex-start;
@@ -534,7 +535,43 @@ body {
 	/* gap: 20px; */
 }
 
-.player {
+.player_cheloveco_chasy {
+	background-color: #d1a2ff;
+
+	max-width: 250px;
+	max-height: 300px;
+	width: 100%;
+	padding: 25px;
+}
+
+.player_intim {
+	background-color: #d1a2ff;
+
+	max-width: 250px;
+	max-height: 300px;
+	width: 100%;
+	padding: 25px;
+}
+
+.player_shans {
+	background-color: #d1a2ff;
+
+	max-width: 250px;
+	max-height: 300px;
+	width: 100%;
+	padding: 25px;
+}
+
+.player_na_virost {
+	background-color: #d1a2ff;
+
+	max-width: 250px;
+	max-height: 300px;
+	width: 100%;
+	padding: 25px;
+}
+
+.player_sohranit_kak {
 	background-color: #d1a2ff;
 
 	max-width: 250px;
@@ -589,12 +626,10 @@ body {
 .section2_suptitle {
 	display: flex;
 	justify-content: center;
-	
+
 	margin: 60px;
 	height: 280px;
-
 }
-
 
 .player_buttons {
 	display: flex;
@@ -606,16 +641,44 @@ body {
 	margin-top: 3px;
 }
 
-.stars{
-	width: 100%;
-	text-align: center;
-}
-.star{
-	width:200px;
-	
-}
-.star--active{
-	width:200px;
-	
+.shanseee {
+	display: flex;
+	justify-content: center;
 }
 
+.stars {
+	width: 100%;
+	text-align: center;
+	display: none;
+	flex-direction: row-reverse;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 40px;
+
+	opacity: 0;
+	transform: scale(0.9);
+	transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.star {
+	width: 200px;
+	cursor: pointer;
+	transition: .2s;
+	color: #d1a2ff;
+	font-size: 150px;
+}
+.star:hover,
+.star:hover ~ .star{
+	color: #bb75ff;
+}
+
+.stars[data-stars-value="1"] .star:nth-child(n+5),
+.stars[data-stars-value="2"] .star:nth-child(n+4),
+.stars[data-stars-value="3"] .star:nth-child(n+3),
+.stars[data-stars-value="4"] .star:nth-child(n+2),
+.stars[data-stars-value="5"] .star:nth-child(n+1){
+	color: #9529ff;
+}
+
+.fade-out {
+	opacity: 0;
+}
