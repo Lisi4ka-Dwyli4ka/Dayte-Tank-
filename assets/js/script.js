@@ -243,15 +243,15 @@ function openModal() {
 
 function closeModal() {
 	// анимки
-	 modal.style.opacity = '0'
-		modal.style.transform = 'scale(0.9)' 
-		modal.addEventListener(
-			'transitionend',//завершение
-			() => {
-				modal.style.display = 'none'
-			},
-			{ once: true } //1 раз
-		)
+	modal.style.opacity = '0'
+	modal.style.transform = 'scale(0.9)'
+	modal.addEventListener(
+		'transitionend', //завершение
+		() => {
+			modal.style.display = 'none'
+		},
+		{ once: true } //1 раз
+	)
 }
 
 btnOkno.forEach((btn) => {
@@ -271,6 +271,81 @@ const starListArray = Array.from(starList)
 
 starListArray.forEach((item) => {
 	item.addEventListener('click', () => {
-		item.parentNode.dataset.starsValue = item.dataset.starValue 
+		item.parentNode.dataset.starsValue = item.dataset.starValue
 	})
 })
+
+// section Video
+const slidesVideo = document.querySelectorAll('.slide-container-video')
+let indexVideo = 0
+
+function nextVideo() {
+	slidesVideo[indexVideo].classList.remove('activ-video')
+	indexVideo = (indexVideo + 1) % slidesVideo.length
+	slidesVideo[indexVideo].classList.add('activ-video')
+}
+
+function prevVideo() {
+	slidesVideo[indexVideo].classList.remove('activ-video')
+	indexVideo = (indexVideo - 1 + slidesVideo.length) % slidesVideo.length
+	slidesVideo[indexVideo].classList.add('activ-video')
+}
+
+// Функция для скрытия текста в content-video
+function hideContentVideo() {
+	const contentVideo = slidesVideo[indexVideo].querySelector('.content-video')
+	contentVideo.style.display = 'none'
+
+	const video = slidesVideo[indexVideo].querySelector('video')
+	video.play() 
+	video.muted = false
+}
+
+
+function showContentVideo() {
+	const contentVideo = slidesVideo[indexVideo].querySelector('.content-video')
+	contentVideo.style.display = 'flex'
+
+	const video = slidesVideo[indexVideo].querySelector('video')
+	video.pause() 
+	video.muted = true 
+}
+
+
+document.querySelectorAll('.video-btn').forEach((button) => {
+	button.addEventListener('click', hideContentVideo)
+})
+
+
+slidesVideo.forEach((slide) => {
+	const video = slide.querySelector('video')
+	if (video) {
+		video.addEventListener('click', showContentVideo)
+	}
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+	const videos = document.querySelectorAll('.slide-video video')
+	const progressBars = document.querySelectorAll('.progress_video')
+	const progressContainers = document.querySelectorAll(
+		'.progress_container_video'
+	)
+
+	videos.forEach((video, index) => {
+		const progressBar = progressBars[index]
+		const progressContainer = progressContainers[index] //перебераем все клипы + бары
+
+		video.addEventListener('timeupdate', () => {
+			const progressPercent = (video.currentTime / video.duration) * 100
+			progressBar.style.width = progressPercent + '%'
+		})
+
+		progressContainer.addEventListener('click', (event) => {
+			const rect = progressContainer.getBoundingClientRect()//координаты
+			const clickX = event.clientX - rect.left//справа налево
+			const newTime = (clickX / rect.width) * video.duration//клик на новое время
+			video.currentTime = newTime//прыгаем на это время
+		})
+	})
+})
+
