@@ -65,6 +65,8 @@ body {
 	height: 100%;
 
 	/* каскадная таблица для того чтобы учесть границу в элемент */
+
+	/* БОЖЕ НЕ ТРОГАЙ ЭТО ДЕЛАЕТ ЭКРАН ШИРОКИМ */
 	*,
 	*:before,
 	*:after {
@@ -83,7 +85,7 @@ body {
 
 /* container */
 .container {
-	width: 90%;
+	
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -143,13 +145,15 @@ body {
 /* header */
 .header {
 	width: 100%;
-	position: absolute;
+	position: fixed;
+	/* background-color: #1c0038; */
 	margin: 0;
 	/* прижимаем кверху */
 	top: 0;
 	left: 0;
 	right: 0;
-	z-index: 1000;
+	z-index: 10000000;
+	box-shadow: 10px 9px 33px 0px rgba(208, 0, 255, 0.237);
 }
 
 .header_inner {
@@ -240,6 +244,8 @@ body {
 /* section1 */
 .etogrid {
 	/* height: 510px; */
+	height: 100%;
+
 	overflow: hidden;
 	display: grid;
 	grid-template-rows: 3fr 1fr 3fr;
@@ -256,9 +262,33 @@ body {
 		'freshy healthy slider-dots orange' 3fr/2fr 1fr 1.5fr 1.5fr;
 }
 
+@media (max-width: 1200px) {
+	.etogrid {
+		grid-template-rows: auto;
+		grid-template-columns: repeat(1fr 0.5fr 0.5fr 1fr);
+		grid-template-areas:
+			'freshy freshy freshy healthy'
+			'slider-arrows slider-arrows slider-arrows healthy'
+			'thirsty thirsty thirsty thirsty'
+			'slider-dots slider-dots orange orange';
+	}
+
+	.slider-dots_items .slider-arrows_items {
+		width: 100%;
+	}
+}
+
+@media (max-width: 600px) {
+	.etogrid {
+		grid-template-columns: 1fr;
+		grid-template-areas: 'healthy' 'slider-arrows' 'freshy' 'slider-dots' 'thirsty' 'orange';
+	}
+}
+
 .slider-arrows {
 	grid-area: slider-arrows;
 	position: relative;
+	background-color: #1c0038;
 }
 
 .slider-arrows_nav {
@@ -325,6 +355,7 @@ body {
 	position: relative;
 	width: 100%;
 	height: 100%;
+	background-color: #1c0038;
 }
 
 .slider-dots_nav-item {
@@ -385,8 +416,8 @@ body {
 	background: url(/assets/img/fon_sectionC.jpg) center no-repeat fixed;
 	background-size: cover;
 	min-height: 100vh; /* Вместо height: 100vh */
-	max-height: 600px;
 	overflow: hidden; /* Чтобы элементы не вылезали */
+	transition: transform 0.8s ease-in-out;
 }
 
 .section-text {
@@ -463,9 +494,8 @@ body {
 	flex-direction: column-reverse;
 	justify-content: center;
 	align-items: center;
-	gap: 30px;
+	gap: 20px;
 	padding: 5px;
-	justify-content: flex-start;
 }
 
 .common-row-rev {
@@ -495,14 +525,11 @@ body {
 	position: relative;
 	grid-area: orange;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
-	margin-left: 100px;
 }
 
 .orange-btn-hrev {
-	position: absolute;
-
 	color: white;
 	font-size: 30px;
 	background: none;
@@ -530,9 +557,17 @@ body {
 	justify-content: space-around;
 	align-items: flex-start;
 	/* flex-wrap: nowrap; */
-	margin-top: 10px;
+	
+	padding: 20px;
+	gap: 20px;
+	flex-wrap: wrap;
 
 	/* gap: 20px; */
+}
+
+@media (max-width: 1200px) {
+	.players {
+	}
 }
 
 .player_cheloveco_chasy {
@@ -627,8 +662,7 @@ body {
 	display: flex;
 	justify-content: center;
 
-	margin: 60px;
-	height: 280px;
+	
 }
 
 .player_buttons {
@@ -649,6 +683,7 @@ body {
 .stars {
 	width: 100%;
 	text-align: center;
+
 	display: none;
 	flex-direction: row-reverse;
 	justify-content: center;
@@ -659,6 +694,7 @@ body {
 	transform: scale(0.9);
 	transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 .star {
 	width: 200px;
 	cursor: pointer;
@@ -681,6 +717,12 @@ body {
 
 .fade-out {
 	opacity: 0;
+}
+
+@media (max-width: 600px) {
+	.star {
+		font-size: 100px;
+	}
 }
 
 /* section-video */
@@ -715,10 +757,7 @@ body {
 	position: absolute;
 
 	pointer-events: none;
-
 }
-
-
 
 .content-video .video-btn {
 	pointer-events: auto;
@@ -817,4 +856,62 @@ body {
 		position: absolute;
 		top: 90%;
 	}
+}
+
+/* footer */
+.footer {
+	width: 100%;
+	background-color: #1c0038;
+	display: flex;
+	justify-content: space-around;
+	padding: 20px 30px;
+	align-items: center;
+	gap: 30px;
+	flex-wrap: wrap;
+}
+
+.text-foo {
+	font-size: 30px;
+	color: #ddbbff;
+	padding: auto;
+	text-align: center;
+}
+
+
+
+.footer-svaz {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.email {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	
+	
+}
+
+
+.form-text {
+	height: 40px;
+	font-family: sans-serif;
+	
+}
+
+.form-btn {
+	height: 40px;
+	border: 5px;
+	
+	
+	
+}
+
+.icon-foo {
+	height: 50px;
+	width: 50px;
+	
 }

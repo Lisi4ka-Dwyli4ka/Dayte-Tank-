@@ -297,25 +297,22 @@ function hideContentVideo() {
 	contentVideo.style.display = 'none'
 
 	const video = slidesVideo[indexVideo].querySelector('video')
-	video.play() 
+	video.play()
 	video.muted = false
 }
-
 
 function showContentVideo() {
 	const contentVideo = slidesVideo[indexVideo].querySelector('.content-video')
 	contentVideo.style.display = 'flex'
 
 	const video = slidesVideo[indexVideo].querySelector('video')
-	video.pause() 
-	video.muted = true 
+	video.pause()
+	video.muted = true
 }
-
 
 document.querySelectorAll('.video-btn').forEach((button) => {
 	button.addEventListener('click', hideContentVideo)
 })
-
 
 slidesVideo.forEach((slide) => {
 	const video = slide.querySelector('video')
@@ -341,11 +338,63 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
 
 		progressContainer.addEventListener('click', (event) => {
-			const rect = progressContainer.getBoundingClientRect()//координаты
-			const clickX = event.clientX - rect.left//справа налево
-			const newTime = (clickX / rect.width) * video.duration//клик на новое время
-			video.currentTime = newTime//прыгаем на это время
+			const rect = progressContainer.getBoundingClientRect() //координаты
+			const clickX = event.clientX - rect.left //справа налево
+			const newTime = (clickX / rect.width) * video.duration //клик на новое время
+			video.currentTime = newTime //прыгаем на это время
 		})
 	})
 })
 
+// скролл
+// let sections = document.querySelectorAll(
+// 	'.section, .intro, .section-video'
+// )
+// let currentSection = 0
+// let isScrolling = false
+
+// function scrollToSection(index) {
+// 	if (index < 0 || index >= sections.length || isScrolling) return
+// 	isScrolling = true //запрет на новый скип
+
+// 	window.scrollTo({
+// 		top: sections[index].offsetTop,
+// 		behavior: 'smooth',
+// 	})
+
+// 	setTimeout(() => {
+// 		isScrolling = false
+// 	}, 1000)
+// }
+
+// window.addEventListener('wheel', (e) => {
+// 	if (isScrolling) return 
+// 	if (e.deltaY > 0) {
+// 		currentSection++
+// 	} else {
+// 		currentSection--
+// 	}
+// 	scrollToSection(currentSection) 
+// })
+
+
+
+
+
+
+
+
+//  let startY = 0
+//  window.addEventListener('touchstart', (e) => {
+// 		startY = e.touches[0].clientY
+//  })
+
+//  window.addEventListener('touchend', (e) => {
+// 		let endY = e.changedTouches[0].clientY
+// 		if (startY > endY) {
+// 			currentSection++
+// 		} else if (startY < endY) {
+// 			currentSection--
+// 		}
+// 		scrollToSection(currentSection)
+//  })
