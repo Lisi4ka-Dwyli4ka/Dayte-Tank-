@@ -2,7 +2,8 @@
 <html lang="ru">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale= no" />
+
 		<link rel="stylesheet" href="/assets/css/style.css" />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,34 +23,28 @@
 	</head>
 	<body>
 		<header class="header">
-			<div class="container">
-				<div class="header_inner">
-					<div>
-						<img class="logo" src="/assets/img/ logo.png" alt="" />
-					</div>
-					<nav>
-						<a class="nav_link" href="#">Home</a>
-						<a class="nav_link" href="#">Biography</a>
-						<a class="nav_link" href="#">Tracks</a>
-						<a class="nav_link" href="#">Members</a>
-						<a class="nav_link" href="#">Contacts</a>
-					</nav>
-				</div>
-				<!-- В КОНЦЕ ПРОЕКТА НЕЗАКРЫТЫЙ ДИВ ИЗЗА КОТОРОГО ПРЕТТЕР НЕ РАБОАТАЛ АЛВОЛАЛОВАЛАО -->
-			</div>
+			<nav class="nav">
+				<a class="nav_link" href="#intro">Home</a>
+				<a class="nav_link" href="#sectionBiography">Biography</a>
+				<a class="nav_link" href="#sectionTracks">Tracks</a>
+				<a class="nav_link" href="#sectionVideo">Video</a>
+				<a class="nav_link" href="#footer">Contacts</a>
+			</nav>
+
+			<!-- В КОНЦЕ ПРОЕКТА НЕЗАКРЫТЫЙ ДИВ ИЗЗА КОТОРОГО ПРЕТТЕР НЕ РАБОАТАЛ АЛВОЛАЛОВАЛАО -->
 		</header>
 
-		<div class="intro">
+		<div id="intro" class="intro">
 			<div class="container">
 				<div class="intro_inner">
 					<h1 class="intro-title">Дайте танк(!)</h1>
 					<h2 class="intro-suptitle">"Группа для пожилой молодежи"</h2>
 
-					<a class="btn" href="#"> Смотреть дальше </a>
+					<a class="btn" href="#sectionBiography"> Смотреть дальше </a>
 				</div>
 			</div>
 		</div>
-		<section class="section">
+		<section id="sectionBiography" class="section">
 			<div class="section-text">
 				<h2 class="section-title">Biography</h2>
 				<h3 class="section-subtitle">С чего все началось</h3>
@@ -151,7 +146,7 @@
 			</div>
 		</section>
 
-		<section class="section">
+		<section id="sectionTracks" class="section">
 			<div class="section-text">
 				<h2 class="section-title">Tracks</h2>
 				<h3 class="section-subtitle">А о чем мы говорим?)</h3>
@@ -287,7 +282,7 @@
 			</div>
 		</section>
 
-		<section class="section-video">
+		<section id="sectionVideo" class="section-video">
 			<div class="slide-container-video activ-video">
 				<div class="slide-video">
 					<video
@@ -409,7 +404,7 @@
 			</div>
 		</section>
 
-		<footer class="footer">
+		<footer id="footer" class="footer">
 			<div class="footer-text">
 				<h3 class="text-foo">developed by Lisi4ka_D</h3>
 			</div>

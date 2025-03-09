@@ -64,7 +64,6 @@ body {
 	width: 100%;
 	height: 100%;
 
-	/* каскадная таблица для того чтобы учесть границу в элемент */
 
 	/* БОЖЕ НЕ ТРОГАЙ ЭТО ДЕЛАЕТ ЭКРАН ШИРОКИМ */
 	*,
@@ -83,11 +82,17 @@ body {
 	}
 }
 
+html,
+body {
+	scroll-behavior: smooth;
+
+}
+
 /* container */
 .container {
-	
 	max-width: 1200px;
 	margin: 0 auto;
+	
 }
 
 /* intro */
@@ -95,6 +100,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	width: 100%;
 	min-height: 100vh;
 	background: url(/assets/img/fon.jpg) center center no-repeat;
@@ -146,27 +152,29 @@ body {
 .header {
 	width: 100%;
 	position: fixed;
-	/* background-color: #1c0038; */
-	margin: 0;
-	/* прижимаем кверху */
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 10000000;
-	box-shadow: 10px 9px 33px 0px rgba(208, 0, 255, 0.237);
-}
-
-.header_inner {
 	display: flex;
-	justify-content: space-between;
+
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
+
+	z-index: 1000;
+	right: 0px;
+	width: 50px;
+	height: 100%;
+	margin-left: auto;
 }
 
+@media (max-width: 600px) {
+	.header {
+		display: none;
+	}
+}
 /* logo */
 .logo {
 	width: 50px;
 	border-radius: 50%;
-	margin: 15px;
+	padding: 5px;
 }
 
 /* nav */
@@ -175,22 +183,37 @@ body {
 	font-weight: 400;
 	font-style: normal;
 	font-size: clamp(12px, 2vw, 14px);
+	font-size: 20px;
+	padding-right: 80px;
+
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	display: none;
+}
+
+.nav.show {
+	display: block;
+	opacity: 1;
 }
 
 .nav_link {
+	display: none;
 	display: inline-block;
-	vertical-align: top;
-	margin: 0 15px;
-
+	text-align: right;
+	padding: 10px 0;
 	color: white;
 	text-decoration: none;
-	/* чтобы цвет менялся плавно */
 	transition: color 0.2s linear;
 }
 
-/* полоска при наводке */
 .nav_link:hover {
 	color: aquamarine;
+}
+
+.nav_link.active {
+	color: aquamarine;
+	font-weight: bold;
+	text-decoration: underline;
 }
 
 /* button */
@@ -557,17 +580,12 @@ body {
 	justify-content: space-around;
 	align-items: flex-start;
 	/* flex-wrap: nowrap; */
-	
+
 	padding: 20px;
 	gap: 20px;
 	flex-wrap: wrap;
 
 	/* gap: 20px; */
-}
-
-@media (max-width: 1200px) {
-	.players {
-	}
 }
 
 .player_cheloveco_chasy {
@@ -644,7 +662,7 @@ body {
 		background-color: black;
 		border-radius: 5px;
 		height: 6px;
-		width: 150px;
+		width: 0;
 	}
 }
 
@@ -661,8 +679,6 @@ body {
 .section2_suptitle {
 	display: flex;
 	justify-content: center;
-
-	
 }
 
 .player_buttons {
@@ -877,8 +893,6 @@ body {
 	text-align: center;
 }
 
-
-
 .footer-svaz {
 	display: flex;
 	justify-content: center;
@@ -891,27 +905,19 @@ body {
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
-	
-	
 }
-
 
 .form-text {
 	height: 40px;
 	font-family: sans-serif;
-	
 }
 
 .form-btn {
 	height: 40px;
 	border: 5px;
-	
-	
-	
 }
 
 .icon-foo {
 	height: 50px;
 	width: 50px;
-	
 }

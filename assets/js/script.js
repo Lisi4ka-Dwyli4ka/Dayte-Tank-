@@ -57,7 +57,6 @@ function showSlideDots(event) {
 
 // player
 
-// Ждет загрузки и только потом выполняет код
 document.addEventListener('DOMContentLoaded', () => {
 	document
 		.querySelectorAll(
@@ -347,54 +346,73 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // скролл
-// let sections = document.querySelectorAll(
-// 	'.section, .intro, .section-video'
-// )
-// let currentSection = 0
-// let isScrolling = false
+const sections = document.querySelectorAll('.intro, .section, .section-video')
+let currentSection = 0
+let isScrolling = false
+function scrollToSection(index) {
+	if (index < 0 || index >= sections.length || isScrolling) return
 
-// function scrollToSection(index) {
-// 	if (index < 0 || index >= sections.length || isScrolling) return
-// 	isScrolling = true //запрет на новый скип
+	isScrolling = true
+	currentSection = index
 
-// 	window.scrollTo({
-// 		top: sections[index].offsetTop,
-// 		behavior: 'smooth',
-// 	})
+	window.scrollTo({
+		top: sections[index].offsetTop,
+		behavior: 'smooth',
+	})
 
-// 	setTimeout(() => {
-// 		isScrolling = false
-// 	}, 1000)
-// }
+	setTimeout(() => {
+		isScrolling = false
+	}, 1000)
+}
 
-// window.addEventListener('wheel', (e) => {
-// 	if (isScrolling) return 
-// 	if (e.deltaY > 0) {
-// 		currentSection++
-// 	} else {
-// 		currentSection--
-// 	}
-// 	scrollToSection(currentSection) 
-// })
+window.addEventListener(
+	'wheel',
+	(e) => {
+		if (isScrolling) {
+			e.preventDefault() //  лишние события
+			return
+		}
 
+		if (e.deltaY > 0 && currentSection < sections.length - 1) {
+			scrollToSection(currentSection + 1)
+		} else if (e.deltaY < 0 && currentSection > 0) {
+			scrollToSection(currentSection - 1)
+		}
+	},
+	{ passive: false }
+)
 
+// навигация
 
+document.addEventListener('DOMContentLoaded', function () {
+	const sections = document.querySelectorAll('section, #intro, #footer')
+	const navLinks = document.querySelectorAll('.nav_link')
+	const nav = document.querySelector('.nav')
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					if (entry.target.id === 'sectionBiography' || 'sectionTracks') {
+						nav.classList.add('show')
+					}
 
+					if (entry.target.id === 'sectionVideo') {
+						nav.classList.remove('show')
+					}
 
+					navLinks.forEach((link) => {
+						link.classList.remove('active') //
+						if (link.getAttribute('href') === `#${entry.target.id}`) {
+							link.classList.add('active') //
+						}
+					})
+				}
+			})
+		},
+		{ threshold: 0.5 }
+	)
 
-
-
-//  let startY = 0
-//  window.addEventListener('touchstart', (e) => {
-// 		startY = e.touches[0].clientY
-//  })
-
-//  window.addEventListener('touchend', (e) => {
-// 		let endY = e.changedTouches[0].clientY
-// 		if (startY > endY) {
-// 			currentSection++
-// 		} else if (startY < endY) {
-// 			currentSection--
-// 		}
-// 		scrollToSection(currentSection)
-//  })
+	sections.forEach((section) => {
+		observer.observe(section)
+	})
+})
